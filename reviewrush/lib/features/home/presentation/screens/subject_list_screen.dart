@@ -128,6 +128,95 @@ class ScreenSubjectBased extends StatelessWidget {
                 ),
               ],
             ),
+            khbox20,
+            // Third Row -
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "All Dates:",
+                  style: GoogleFonts.inconsolata(
+                      fontSize: 12,
+                      color: const Color.fromARGB(255, 46, 0, 0),
+                      fontWeight: FontWeight.bold),
+                ),
+                const Icon(Icons.short_text_rounded)
+              ],
+            ),
+            khbox10,
+            Expanded(
+              child: ListView(
+                children: const [
+                  WidgetSubByDatesTiles(
+                    songTitle: 'On My Way',
+                    artistName: 'Jain',
+                  ),
+                  WidgetSubByDatesTiles(
+                    songTitle: 'Whistle',
+                    artistName: 'Blackpink',
+                  ),
+                  WidgetSubByDatesTiles(
+                    songTitle: 'Shape of You',
+                    artistName: 'Ed Sheeran',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WidgetSubByDatesTiles extends StatelessWidget {
+  final String songTitle;
+  final String artistName;
+
+  const WidgetSubByDatesTiles({
+    super.key,
+    required this.songTitle,
+    required this.artistName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        leading: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.grey[300],
+          ),
+          child: const Center(
+            child: Text("data"),
+          ),
+        ),
+        title: Text(
+          songTitle,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        subtitle: Text(
+          artistName,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+        ),
+        trailing: const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.favorite_border, color: Colors.grey),
+            SizedBox(width: 16),
+            Icon(Icons.more_vert, color: Colors.grey),
           ],
         ),
       ),
