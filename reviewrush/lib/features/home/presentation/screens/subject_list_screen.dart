@@ -11,158 +11,156 @@ class ScreenSubjectBased extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            khbox10,
-            Text(
-              "My \nSubjects,",
-              style: GoogleFonts.inconsolata(
-                  fontSize: 24,
-                  color: const Color.fromARGB(255, 46, 0, 0),
-                  fontWeight: FontWeight.bold),
-            ),
-            khbox20,
-            // First Row - Photo and To-Do List
-            Row(
-              children: [
-                // Photo Pin Card
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
-                    margin: const EdgeInsets.only(right: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'PHOTO',
-                          style: GoogleFonts.inconsolata(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              khbox10,
+              Text(
+                "My \nSubjects,",
+                style: GoogleFonts.inconsolata(
+                    fontSize: 24,
+                    color: const Color.fromARGB(255, 46, 0, 0),
+                    fontWeight: FontWeight.bold),
+              ),
+              khbox20,
+              // First Row - Photo and To-Do List
+              Row(
+                children: [
+                  // Photo Pin Card
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.only(right: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'PHOTO',
+                            style: GoogleFonts.inconsolata(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Go To A New Photography Location With Zahra',
-                          style: GoogleFonts.inconsolata(
-                            fontSize: 12,
-                            color: Colors.white,
+                          const SizedBox(height: 8),
+                          Text(
+                            'Go To A New Photography Location With Zahra',
+                            style: GoogleFonts.inconsolata(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                      ],
+                          const SizedBox(height: 8),
+                        ],
+                      ),
                     ),
                   ),
-                ),
 
-                // To-Do List Pin Card
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
-                    margin: const EdgeInsets.only(left: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Subjects',
-                          style: GoogleFonts.inconsolata(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                  // To-Do List Pin Card
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.only(left: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Subjects',
+                            style: GoogleFonts.inconsolata(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'assasadasddfasasas',
-                          style: GoogleFonts.inconsolata(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                          const SizedBox(height: 8),
+                          Text(
+                            'assasadasddfasasas',
+                            style: GoogleFonts.inconsolata(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            // Second Row - Video
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Colors.lightBlue,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Quiz',
-                          style: GoogleFonts.inconsolata(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Halloween Cake Tutorial Video Editing...',
-                          style: GoogleFonts.inconsolata(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            khbox20,
-            // Third Row -
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "All Dates:",
-                  style: GoogleFonts.inconsolata(
-                      fontSize: 12,
-                      color: const Color.fromARGB(255, 46, 0, 0),
-                      fontWeight: FontWeight.bold),
-                ),
-                const Icon(Icons.short_text_rounded)
-              ],
-            ),
-            khbox10,
-            Expanded(
-              child: ListView(
-                children: const [
-                  WidgetSubByDatesTiles(
-                    songTitle: 'On My Way',
-                    artistName: 'Jain',
-                  ),
-                  WidgetSubByDatesTiles(
-                    songTitle: 'Whistle',
-                    artistName: 'Blackpink',
-                  ),
-                  WidgetSubByDatesTiles(
-                    songTitle: 'Shape of You',
-                    artistName: 'Ed Sheeran',
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              // Second Row - Video
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Colors.lightBlue,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Quiz',
+                            style: GoogleFonts.inconsolata(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Halloween Cake Tutorial Video Editing...',
+                            style: GoogleFonts.inconsolata(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              khbox20,
+              // Third Row -
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "All Dates:",
+                    style: GoogleFonts.inconsolata(
+                        fontSize: 12,
+                        color: const Color.fromARGB(255, 46, 0, 0),
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const Icon(Icons.short_text_rounded)
+                ],
+              ),
+              khbox10,
+              ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return WidgetSubByDatesTiles(
+                      title: 'first study',
+                      subtitle: 'Jain',
+                      dayCountByNumber: index + 1,
+                      daysPassedCount: '2 days',
+                      bgColorOFCount: Colors.grey,
+                    );
+                  },
+                  separatorBuilder: (context, index) => khbox10,
+                  itemCount: 10),
+            ],
+          ),
         ),
       ),
     );
@@ -170,13 +168,19 @@ class ScreenSubjectBased extends StatelessWidget {
 }
 
 class WidgetSubByDatesTiles extends StatelessWidget {
-  final String songTitle;
-  final String artistName;
+  final String title;
+  final String subtitle;
+  final int dayCountByNumber;
+  final String daysPassedCount;
+  final Color bgColorOFCount;
 
   const WidgetSubByDatesTiles({
     super.key,
-    required this.songTitle,
-    required this.artistName,
+    required this.title,
+    required this.subtitle,
+    required this.dayCountByNumber,
+    required this.daysPassedCount,
+    required this.bgColorOFCount,
   });
 
   @override
@@ -190,14 +194,14 @@ class WidgetSubByDatesTiles extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.grey[300],
+            color: bgColorOFCount,
           ),
-          child: const Center(
-            child: Text("data"),
+          child: Center(
+            child: Text(dayCountByNumber.toString()),
           ),
         ),
         title: Text(
-          songTitle,
+          title,
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -205,19 +209,18 @@ class WidgetSubByDatesTiles extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          artistName,
+          subtitle,
           style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
         ),
-        trailing: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.favorite_border, color: Colors.grey),
-            SizedBox(width: 16),
-            Icon(Icons.more_vert, color: Colors.grey),
-          ],
+        trailing: Text(
+          daysPassedCount,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Color.fromARGB(255, 130, 11, 3),
+          ),
         ),
       ),
     );
