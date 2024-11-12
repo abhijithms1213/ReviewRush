@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reviewrush/features/home/presentation/screens/home.dart';
 import 'package:reviewrush/features/home/presentation/screens/home_screen.dart';
 
 void main() {
