@@ -10,17 +10,19 @@ class ScreenProfile extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: const SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(16),
-            child: PatientProfileCard(
-              name: 'Anna Heraldine',
-              age: '26',
-              gender: 'Female',
-              diagnosis: 'Sprained Knee',
-              imageUrl:
-                  'https://st3.depositphotos.com/1037987/15097/i/450/depositphotos_150975580-stock-photo-portrait-of-businesswoman-in-office.jpg', // Replace with actual image URL
-            ),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              PatientProfileCard(
+                name: 'Anna Heraldine',
+                age: '26',
+                gender: 'Female',
+                diagnosis: 'Sprained Knee',
+                imageUrl:
+                    'https://st3.depositphotos.com/1037987/15097/i/450/depositphotos_150975580-stock-photo-portrait-of-businesswoman-in-office.jpg', // Replace with actual image URL
+              ),
+            ],
           ),
         ),
       ),
@@ -97,11 +99,11 @@ class PatientProfileCard extends StatelessWidget {
                   children: [
                     // Header
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        IconButton(
-                          icon: const Icon(Icons.search, color: Colors.black),
-                          onPressed: () {},
+                        ActionButton(
+                          icon: Icons.watch_outlined,
+                          onTap: () {},
                         ),
                       ],
                     ),
@@ -150,17 +152,13 @@ class PatientProfileCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Spacer(), 
+                    const Spacer(),
                     // Action Buttons
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ActionButton(
-                          icon: Icons.share,
-                          onTap: () {},
-                        ),
-                        ActionButton(
-                          icon: Icons.phone,
+                          icon: Icons.add_ic_call_outlined,
                           onTap: () {},
                         ),
                       ],
