@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:reviewrush/features/chat_ui/presentation/screens/chat_ui_screen.dart';
 import 'package:reviewrush/features/home/presentation/screens/home_screen.dart';
+import 'package:reviewrush/features/home/presentation/screens/subject_list_screen.dart';
+import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
+import 'package:reviewrush/features/settings/presentation/screens/settings_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
           surface: Colors.white,
         ),
       ),
-      home: const ScreenHome(),
+      home: const SettingsScreen(),
     );
   }
 }
