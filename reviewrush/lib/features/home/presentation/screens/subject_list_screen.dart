@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
+import 'package:reviewrush/features/home/presentation/widgets/tile_of_date_based.dart';
 
 class ScreenSubjectBased extends StatelessWidget {
   const ScreenSubjectBased({super.key});
@@ -151,7 +152,7 @@ class ScreenSubjectBased extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return WidgetSubByDatesTiles(
                       title: 'first study',
-                      subtitle: 'Jain',
+                      subtitle: '7:00 PM',
                       dayCountByNumber: index + 1,
                       daysPassedCount: '2 days',
                       bgColorOFCount: Colors.grey,
@@ -160,66 +161,6 @@ class ScreenSubjectBased extends StatelessWidget {
                   separatorBuilder: (context, index) => khbox10,
                   itemCount: 10),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class WidgetSubByDatesTiles extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final int dayCountByNumber;
-  final String daysPassedCount;
-  final Color bgColorOFCount;
-
-  const WidgetSubByDatesTiles({
-    super.key,
-    required this.title,
-    required this.subtitle,
-    required this.dayCountByNumber,
-    required this.daysPassedCount,
-    required this.bgColorOFCount,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-        leading: Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: bgColorOFCount,
-          ),
-          child: Center(
-            child: Text(dayCountByNumber.toString()),
-          ),
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Colors.grey,
-          ),
-        ),
-        trailing: Text(
-          daysPassedCount,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Color.fromARGB(255, 130, 11, 3),
           ),
         ),
       ),
