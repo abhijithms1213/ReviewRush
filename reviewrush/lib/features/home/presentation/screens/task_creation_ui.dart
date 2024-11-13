@@ -14,6 +14,7 @@ class TaskCreationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(253, 255, 255, 255),
       body: Stack(
+        fit: StackFit.expand,
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -118,76 +119,53 @@ class TaskCreationScreen extends StatelessWidget {
                         ),
                         border: InputBorder.none,
                       ),
-                      style: GoogleFonts.khula(fontSize: 16, color: Colors.black),
+                      style:
+                          GoogleFonts.khula(fontSize: 16, color: Colors.black),
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
                     ),
                   ),
                   khbox10,
-                  Center(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 32),
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      onPressed: () {
-                        // Handle task creation
-                      },
-                      child: Text(
-                        "Create Reminder",
-                        style: fontmontserratTextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),
           ),
-       
-        // Positioned button at the bottom right
+          // The Stack with Positioned to place the button at the bottom-right
           Positioned(
             bottom: 20,
-            right: 20,
-            child: GestureDetector(
-              onTap: () {
-                // Handle button tap here
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 8,
-                      offset: Offset(2, 4),
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 8,
+                    offset: const Offset(2, 4),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.add, color: Colors.white),
+                  SizedBox(width: 8),
+                  Text(
+                    "+ Create New File",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.add, color: Colors.white),
-                    const SizedBox(width: 8),
-                    Text(
-                      "+ Create New File",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Icon(Icons.arrow_forward, color: Colors.white),
-                  ],
-                ),
+                  ),
+                  SizedBox(width: 8),
+                  Icon(Icons.arrow_forward, color: Colors.white),
+                ],
               ),
             ),
-          ), ],
+          ),
+        ],
       ),
     );
   }
