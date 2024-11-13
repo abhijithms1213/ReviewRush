@@ -62,7 +62,7 @@ class _MessageBubbleState extends State<MessageBubble> {
                         ),
                       )
                     : Text(
-                        'Tap to see your message',
+                        'Tap to see your message >',
                         style: GoogleFonts.openSans(
                             color: Colors.black,
                             fontSize: 14,

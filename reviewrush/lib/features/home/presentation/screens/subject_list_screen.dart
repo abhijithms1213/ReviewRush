@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
+import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
 import 'package:reviewrush/features/home/presentation/widgets/tile_of_date_based.dart';
 
 class ScreenSubjectBased extends StatelessWidget {
@@ -16,6 +17,16 @@ class ScreenSubjectBased extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              khbox10,
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Color.fromARGB(225, 46, 0, 0),
+                ),
+              ),
               khbox10,
               Text(
                 "My \nSubjects,",
@@ -67,7 +78,7 @@ class ScreenSubjectBased extends StatelessWidget {
                       padding: const EdgeInsets.all(15),
                       margin: const EdgeInsets.only(left: 8),
                       decoration: BoxDecoration(
-                        color: Colors.yellow,
+                        color: const Color.fromARGB(255, 68, 212, 128),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
@@ -77,7 +88,7 @@ class ScreenSubjectBased extends StatelessWidget {
                             'Subjects',
                             style: GoogleFonts.inconsolata(
                               fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              color: Colors.white,
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -85,7 +96,7 @@ class ScreenSubjectBased extends StatelessWidget {
                             'assasadasddfasasas',
                             style: GoogleFonts.inconsolata(
                               fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -154,7 +165,7 @@ class ScreenSubjectBased extends StatelessWidget {
                       title: 'first study',
                       subtitle: '7:00 PM',
                       dayCountByNumber: index + 1,
-                      daysPassedCount: '2 days',
+                      daysPassedCount: '2 days ago',
                       bgColorOFCount: Colors.grey,
                     );
                   },
@@ -162,6 +173,19 @@ class ScreenSubjectBased extends StatelessWidget {
                   itemCount: 10),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromARGB(118, 135, 254, 143),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const ScreenTaskCreation(),
+            ),
+          );
+        },
+        child: const Icon(
+          Icons.add,
         ),
       ),
     );

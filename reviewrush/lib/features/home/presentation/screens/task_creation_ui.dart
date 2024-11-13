@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/fonts.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
 
-class TaskCreationScreen extends StatelessWidget {
-  const TaskCreationScreen({super.key});
+class ScreenTaskCreation extends StatelessWidget {
+  const ScreenTaskCreation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +56,18 @@ class TaskCreationScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const CircleAvatar(
-                          radius: 14,
-                          backgroundColor: Colors.transparent,
-                          child: Icon(
-                            Icons.arrow_back_ios_new,
-                            size: 18,
-                            color: Colors.black,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const CircleAvatar(
+                            radius: 14,
+                            backgroundColor: Colors.transparent,
+                            child: Icon(
+                              Icons.arrow_back_ios_new,
+                              size: 18,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ],

@@ -51,7 +51,7 @@ class WidgetSubByDatesTiles extends StatelessWidget {
         trailing: Text(
           daysPassedCount,
           style: const TextStyle(
-            fontSize: 14,
+            fontSize: 12,
             color: Color.fromARGB(255, 130, 11, 3),
           ),
         ),
