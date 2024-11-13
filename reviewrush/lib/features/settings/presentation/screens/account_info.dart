@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/fonts.dart';
 
 class ScreenAccount extends StatelessWidget {
@@ -50,6 +49,9 @@ class ScreenAccount extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
               onTap: () {
+                ageController.dispose();
+                nameController.dispose();
+                emailController.dispose();
                 Navigator.of(context).pop();
               },
               child: Container(
