@@ -179,35 +179,38 @@ class TaskCreationScreen extends StatelessWidget {
             Positioned(
               bottom: 40,
               right: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 229, 59, 60),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 8,
-                      offset: const Offset(2, 4),
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 229, 59, 60),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
                     ),
-                  ],
-                ),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "Add the remainder",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 8,
+                        offset: const Offset(2, 4),
                       ),
-                    ),
-                    SizedBox(width: 8),
-                  ],
+                    ],
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Add the remainder",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                    ],
+                  ),
                 ),
               ),
             ),
