@@ -132,12 +132,15 @@ class TaskCreationScreen extends StatelessWidget {
           ),
           // The Stack with Positioned to place the button at the bottom-right
           Positioned(
-            bottom: 20,
-            right: 0,
+            bottom: 35,
+            right: 10,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(20),
+                color: const Color.fromARGB(121, 229, 59, 59),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.2),
@@ -153,14 +156,49 @@ class TaskCreationScreen extends StatelessWidget {
                   Icon(Icons.add, color: Colors.white),
                   SizedBox(width: 8),
                   Text(
-                    "+ Create New File",
+                    "Add the remainder",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(width: 8),
-                  Icon(Icons.arrow_forward, color: Colors.white),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 40,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255,229,59,60),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 8,
+                    offset: const Offset(2, 4),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.add, color: Colors.white),
+                  SizedBox(width: 8),
+                  Text(
+                    "Add the remainder",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 8),
                 ],
               ),
             ),
