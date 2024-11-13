@@ -1,5 +1,6 @@
 // Screen file
 import 'package:flutter/material.dart';
+import 'package:reviewrush/features/settings/presentation/screens/account_info.dart';
 import 'package:reviewrush/features/settings/presentation/screens/faq_ui.dart';
 import 'package:reviewrush/features/settings/presentation/screens/report_an_issue.dart';
 import 'package:reviewrush/features/settings/presentation/widgets/settings_tile.dart';
@@ -42,7 +43,13 @@ class ScreenSettings extends StatelessWidget {
           SettingsTile(
             icon: Icons.person_outline,
             title: 'Account Information',
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ScreenAccount(),
+                ),
+              );
+            },
           ),
           SettingsTile(
             icon: Icons.palette_outlined,
