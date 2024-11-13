@@ -68,7 +68,6 @@ class ChallengeTile extends StatelessWidget {
             const SizedBox(),
             // const SizedBox(width: 12),
             GestureDetector(
-              onTap: onTap,
               child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(

@@ -5,6 +5,7 @@ import 'package:reviewrush/features/home/presentation/screens/subject_list_scree
 import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
 import 'package:reviewrush/features/settings/presentation/screens/account_info.dart';
 import 'package:reviewrush/features/settings/presentation/screens/faq_ui.dart';
+import 'package:reviewrush/features/settings/presentation/screens/profile.dart';
 import 'package:reviewrush/features/settings/presentation/screens/report_an_issue.dart';
 import 'package:reviewrush/features/settings/presentation/screens/settings_screen.dart';
 

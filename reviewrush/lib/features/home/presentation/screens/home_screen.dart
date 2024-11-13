@@ -4,6 +4,7 @@ import 'package:reviewrush/core/constants/fonts.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
 import 'package:reviewrush/features/home/presentation/screens/subject_list_screen.dart';
 import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
+import 'package:reviewrush/features/home/presentation/widgets/bottom_sheet.dart';
 import 'package:reviewrush/features/home/presentation/widgets/challenge_tile.dart';
 import 'package:reviewrush/features/home/presentation/widgets/tile_ofsub_tiles.dart';
 import 'package:reviewrush/features/settings/presentation/screens/profile.dart';
@@ -68,9 +69,24 @@ class ScreenHome extends StatelessWidget {
                 style: fontinterTextStyle(color: Colors.black38, fontSize: 16),
               ),
               khbox20,
-              ChallengeTile(
-                steps: 1,
-                onTap: () {},
+              GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                      ),
+                      child: const TaskBottomSheet(),
+                    ),
+                  );
+                },
+                child: ChallengeTile(
+                  steps: 1,
+                  onTap: () {},
+                ),
               ),
               khbox20,
               Row(

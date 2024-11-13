@@ -22,8 +22,8 @@ class ActionButton extends StatelessWidget {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Container(
-                width: 80,
-                height: 80,
+                width: 60,
+                height: 60,
                 decoration: BoxDecoration(
                   // color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(100),
