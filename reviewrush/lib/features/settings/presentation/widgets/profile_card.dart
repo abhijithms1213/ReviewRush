@@ -27,7 +27,7 @@ class PatientProfileCard extends StatelessWidget {
 
         return Container(
           width: isSmallScreen ? double.infinity : 400,
-          height: isSmallScreen ? 500 : 600,
+          height: isSmallScreen ? 400 : 600,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(24),
