@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
+import 'package:reviewrush/features/settings/presentation/screens/settings_screen.dart';
 import 'package:reviewrush/features/settings/presentation/widgets/action_button.dart';
 
 class PatientProfileCard extends StatelessWidget {
@@ -74,8 +75,12 @@ class PatientProfileCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         ActionButton(
-                          icon: Icons.watch_outlined,
-                          onTap: () {},
+                          icon: Icons.settings,
+                          onTap: () { Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const ScreenSettings(),
+                              ),
+                            );},
                         ),
                       ],
                     ),
@@ -130,8 +135,14 @@ class PatientProfileCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ActionButton(
-                          icon: Icons.add_ic_call_outlined,
-                          onTap: () {},
+                          icon: Icons.image_outlined,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const ScreenSettings(),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),

@@ -1,19 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:reviewrush/core/constants/fonts.dart';
 
-class ScreenAccount extends StatefulWidget {
-  const ScreenAccount({super.key});
+class ScreenAccount extends StatelessWidget {
+  ScreenAccount({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
-  @override
-  State<ScreenAccount> createState() => _AccountScreenState();
-}
+  String? selectedSemester;
+  String? selectedDepartment;
 
-class _AccountScreenState extends State<ScreenAccount> {
-  String? selectedGender;
-  final TextEditingController nameController =
-      TextEditingController(text: 'David Clerisseau');
-  final TextEditingController ageController = TextEditingController(text: '28');
-  final TextEditingController emailController =
-      TextEditingController(text: 'clerisseau@gmail.com');
+  final List<String> semesters = [
+    'S1',
+    'S2',
+    'S3',
+    'S4',
+    'S5',
+    'S6',
+    'S7',
+    'S8'
+  ];
+
+  final List<String> departments = [
+    'CSE',
+    'Civil',
+    'Mechanical',
+    'ECE',
+    'EEE',
+    'Chemical',
+    'Biotech',
+    'IT',
+    'Other'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +41,31 @@ class _AccountScreenState extends State<ScreenAccount> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.check_circle, color: Colors.blue, size: 28),
-            onPressed: () {},
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+              onTap: () {
+                ageController.dispose();
+                nameController.dispose();
+                emailController.dispose();
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Icon(Icons.done, color: Colors.white, size: 28),
+              ),
+            ),
           ),
         ],
-        title: const Text(
-          'Account',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -47,46 +73,31 @@ class _AccountScreenState extends State<ScreenAccount> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Center(
-              child: Column(
-                children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.person_outline,
-                      size: 50,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Upload Image',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ],
+            const Text(
+              'Account',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 32),
             _buildInputField('Name', nameController),
             const SizedBox(height: 24),
-            _buildGenderSelection(),
-            const SizedBox(height: 24),
             _buildInputField('Age', ageController,
                 keyboardType: TextInputType.number),
             const SizedBox(height: 24),
-            _buildInputField('Email', emailController,
-                keyboardType: TextInputType.emailAddress),
+            _buildInputField('College Name', emailController),
+            const SizedBox(height: 24),
+            _buildDropdownField('Semester', selectedSemester, semesters,
+                (value) {
+              selectedSemester = value;
+            }),
+            const SizedBox(height: 24),
+            _buildDropdownField('Department', selectedDepartment, departments,
+                (value) {
+              selectedDepartment = value;
+            }),
           ],
         ),
       ),
@@ -98,97 +109,96 @@ class _AccountScreenState extends State<ScreenAccount> {
     TextEditingController controller, {
     TextInputType keyboardType = TextInputType.text,
   }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey[600],
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Colors.grey[300]!),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Colors.grey[300]!),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Colors.blue),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildGenderSelection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Gender',
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey[600],
-          ),
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            _buildGenderOption('Male', Icons.male, '♂'),
-            const SizedBox(width: 16),
-            _buildGenderOption('Female', Icons.female, '♀'),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildGenderOption(String gender, IconData icon, String symbol) {
-    final isSelected = selectedGender == gender;
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedGender = gender;
-        });
-      },
-      child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: isSelected ? Colors.blue : Colors.grey[200],
-        ),
-        child: Center(
+        SizedBox(
+          width: 100,
           child: Text(
-            symbol,
+            label,
             style: TextStyle(
-              fontSize: 24,
-              color: isSelected ? Colors.white : Colors.grey[600],
+              fontSize: 14,
+              color: Colors.grey[600],
             ),
           ),
         ),
-      ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: TextField(
+            controller: controller,
+            style: fontmontserratTextStyle(
+              fontSize: 16,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+            keyboardType: keyboardType,
+            decoration: const InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Color.fromARGB(41, 0, 0, 0)),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black, width: 1.5),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
-  @override
-  void dispose() {
-    nameController.dispose();
-    ageController.dispose();
-    emailController.dispose();
-    super.dispose();
+  Widget _buildDropdownField(
+    String label,
+    String? selectedValue,
+    List<String> items,
+    ValueChanged<String?> onChanged,
+  ) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 100,
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[600],
+            ),
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: DropdownButtonFormField<String>(
+            value: selectedValue,
+            onChanged: onChanged,
+            items: items.map((String item) {
+              return DropdownMenuItem<String>(
+                value: item,
+                child: Text(item,
+                    style: fontmontserratTextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold)),
+              );
+            }).toList(),
+            decoration: const InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Color.fromARGB(41, 0, 0, 0)),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black, width: 1.5),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

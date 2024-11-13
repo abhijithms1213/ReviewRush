@@ -42,24 +42,29 @@ class ScreenSettings extends StatelessWidget {
           const SizedBox(height: 8),
           SettingsTile(
             icon: Icons.person_outline,
-            title: 'Account Information',
+            title: 'Account Settings',
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const ScreenAccount(),
+                  builder: (context) => ScreenAccount(),
                 ),
               );
             },
+            onToggleChanged: (bool value) {},
           ),
           SettingsTile(
             icon: Icons.palette_outlined,
             title: 'Appearance',
             onTap: () {},
+            onToggleChanged: (bool value) {},
+            showToggle: true,
+            initialToggleValue: true,
           ),
           SettingsTile(
             icon: Icons.notifications_outlined,
             title: 'Notifications',
             onTap: () {},
+            onToggleChanged: (bool value) {},
           ),
           const SizedBox(height: 24),
           const Text(
@@ -81,6 +86,7 @@ class ScreenSettings extends StatelessWidget {
                 ),
               );
             },
+            onToggleChanged: (bool value) {},
           ),
           SettingsTile(
             icon: Icons.help_outline,
@@ -92,6 +98,7 @@ class ScreenSettings extends StatelessWidget {
                 ),
               );
             },
+            onToggleChanged: (bool value) {},
           ),
         ],
       ),

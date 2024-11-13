@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:reviewrush/core/constants/color.dart';
 import 'package:reviewrush/core/constants/fonts.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
+import 'package:reviewrush/features/home/presentation/screens/subject_list_screen.dart';
+import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
 import 'package:reviewrush/features/home/presentation/widgets/challenge_tile.dart';
+import 'package:reviewrush/features/home/presentation/widgets/tile_ofsub_tiles.dart';
+import 'package:reviewrush/features/settings/presentation/screens/profile.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -35,10 +39,19 @@ class ScreenHome extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const CircleAvatar(
-                      backgroundColor: Colors.black12,
-                      radius: 30,
-                      child: Icon(Icons.import_contacts),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ScreenProfile(),
+                          ),
+                        );
+                      },
+                      child: const CircleAvatar(
+                        backgroundColor: Colors.black12,
+                        radius: 30,
+                        child: Icon(Icons.import_contacts),
+                      ),
                     ),
                     kwbox10,
                   ],
@@ -61,14 +74,14 @@ class ScreenHome extends StatelessWidget {
               ),
               khbox20,
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text("Your Workout",
+                  Text("Your subjects",
                       style: fontmontserratTextStyle(
                           fontSize: 20,
                           color: Colors.black,
                           fontWeight: FontWeight.bold)),
-                  const Icon(Icons.arrow_forward_ios_sharp),
+                  // const Icon(Icons.arrow_forward_ios_sharp),
                 ],
               ),
               khbox10,
@@ -77,24 +90,34 @@ class ScreenHome extends StatelessWidget {
                 // add space between tiles
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  if (index == 2) {
-                    return Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.teal.withOpacity(.5),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20))),
-                          height: 90,
-                        ),
-                        const SubjectsTiles(),
-                        khbox10,
-                      ],
-                    );
-                  }
-                  return const Column(
+                  // if (index == 2) {
+                  //   return Column(
+                  //     children: [
+                  //       Container(
+                  //         decoration: BoxDecoration(
+                  //             color: Colors.teal.withOpacity(.5),
+                  //             borderRadius:
+                  //                 const BorderRadius.all(Radius.circular(20))),
+                  //         height: 90,
+                  //       ),
+                  //       const SubjectsTiles(),
+                  //       khbox10,
+                  //     ],
+                  //   );
+                  // }
+                  return Column(
                     children: [
-                      SubjectsTiles(),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ScreenSubjectBased(),
+                            ),
+                          );
+                        },
+                        child: const SubjectsTiles(),
+                      ),
                       khbox10,
                     ],
                   );
@@ -104,54 +127,6 @@ class ScreenHome extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class SubjectsTiles extends StatelessWidget {
-  const SubjectsTiles({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color.fromARGB(7, 0, 0, 0), width: 2),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: 70,
-            height: 60,
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(43, 255, 235, 59),
-                borderRadius: BorderRadius.all(Radius.circular(14))),
-            child: const Center(
-              child: Icon(
-                Icons.hdr_strong,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-          // kwbox20,
-          Text(
-            "Push Ups",
-            style: fontmontserratTextStyle(
-                fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(),
-          Text(
-            "5 set",
-            style: fontmontserratTextStyle(
-                fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ],
       ),
     );
   }

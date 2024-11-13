@@ -16,6 +16,12 @@ class ScreenProfile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             khbox10,
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
+            khbox10,
             Text(
               "Hello \nGood Afternoon,",
               style: fontmontserratAlternatesTextStyle(

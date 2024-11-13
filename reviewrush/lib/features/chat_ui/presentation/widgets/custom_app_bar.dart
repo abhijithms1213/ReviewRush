@@ -51,15 +51,20 @@ class ChatTopBar extends StatelessWidget implements PreferredSizeWidget {
                   ],
                 ),
                 const Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.purple.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  padding: const EdgeInsets.all(8.0),
-                  child: const Icon(
-                    Icons.arrow_back_ios_new,
-                    color: Colors.purple,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.purple.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.purple,
+                    ),
                   ),
                 ),
               ],
