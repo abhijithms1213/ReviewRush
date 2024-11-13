@@ -132,7 +132,10 @@ class TaskCreationScreen extends StatelessWidget {
                   onPressed: () {
                     // Handle task creation
                   },
-                  child: const Text("Create Reminder"),
+                  child: Text(
+                    "Create Reminder",
+                    style: fontmontserratTextStyle(color: Colors.white),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
