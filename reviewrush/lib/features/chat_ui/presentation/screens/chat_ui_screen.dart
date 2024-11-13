@@ -39,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         _messages.add(ChatMessage(
-          text: "This is a simulated response to your message.",
+          text: "This is a ok simulated response to your message.",
           isUser: false,
         ));
       });
