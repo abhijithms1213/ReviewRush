@@ -3,6 +3,9 @@ import 'package:reviewrush/features/chat_ui/presentation/screens/chat_ui_screen.
 import 'package:reviewrush/features/home/presentation/screens/home_screen.dart';
 import 'package:reviewrush/features/home/presentation/screens/subject_list_screen.dart';
 import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
+import 'package:reviewrush/features/settings/presentation/screens/account_info.dart';
+import 'package:reviewrush/features/settings/presentation/screens/faq_ui.dart';
+import 'package:reviewrush/features/settings/presentation/screens/report_an_issue.dart';
 import 'package:reviewrush/features/settings/presentation/screens/settings_screen.dart';
 
 void main() {
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
           surface: Colors.white,
         ),
       ),
-      home: const SettingsScreen(),
+      home: const ScreenAccount(),
     );
   }
 }
