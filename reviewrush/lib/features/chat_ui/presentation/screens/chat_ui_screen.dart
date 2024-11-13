@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:reviewrush/features/chat_ui/data/models/chat_message.dart';
 import 'package:reviewrush/features/chat_ui/presentation/widgets/chat_ui_widget.dart';
+import 'package:reviewrush/features/chat_ui/presentation/widgets/custom_app_bar.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -63,26 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'ChatGPT',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.edit_square),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: const ChatTopBar(),
       body: Column(
         children: [
           Expanded(
