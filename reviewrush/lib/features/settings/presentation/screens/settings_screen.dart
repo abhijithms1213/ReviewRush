@@ -1,9 +1,11 @@
 // Screen file
 import 'package:flutter/material.dart';
+import 'package:reviewrush/features/settings/presentation/screens/faq_ui.dart';
+import 'package:reviewrush/features/settings/presentation/screens/report_an_issue.dart';
 import 'package:reviewrush/features/settings/presentation/widgets/settings_tile.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class ScreenSettings extends StatelessWidget {
+  const ScreenSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +45,6 @@ class SettingsScreen extends StatelessWidget {
             onTap: () {},
           ),
           SettingsTile(
-            icon: Icons.location_on_outlined,
-            title: 'Address Information',
-            onTap: () {},
-          ),
-          SettingsTile(
-            icon: Icons.payment_outlined,
-            title: 'Payment methods',
-            onTap: () {},
-          ),
-          SettingsTile(
             icon: Icons.palette_outlined,
             title: 'Appearance',
             onTap: () {},
@@ -75,12 +67,24 @@ class SettingsScreen extends StatelessWidget {
           SettingsTile(
             icon: Icons.warning_outlined,
             title: 'Report an issue',
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ReportIssueScreen(),
+                ),
+              );
+            },
           ),
           SettingsTile(
             icon: Icons.help_outline,
             title: 'FAQ',
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const FAQScreen(),
+                ),
+              );
+            },
           ),
         ],
       ),
