@@ -185,7 +185,9 @@ class ScreenTaskCreation extends StatelessWidget {
               bottom: 40,
               right: 0,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 229, 59, 60),

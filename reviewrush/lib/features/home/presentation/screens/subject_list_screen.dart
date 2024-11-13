@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/spacing.dart';
+import 'package:reviewrush/features/chat_ui/presentation/screens/chat_ui_screen.dart';
 import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
 import 'package:reviewrush/features/home/presentation/widgets/tile_of_date_based.dart';
 
@@ -161,12 +162,21 @@ class ScreenSubjectBased extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return WidgetSubByDatesTiles(
-                      title: 'first study',
-                      subtitle: '7:00 PM',
-                      dayCountByNumber: index + 1,
-                      daysPassedCount: '2 days ago',
-                      bgColorOFCount: Colors.grey,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ScreenChat(),
+                          ),
+                        );
+                      },
+                      child: WidgetSubByDatesTiles(
+                        title: 'first study',
+                        subtitle: '7:00 PM',
+                        dayCountByNumber: index + 1,
+                        daysPassedCount: '2 days ago',
+                        bgColorOFCount: Colors.grey,
+                      ),
                     );
                   },
                   separatorBuilder: (context, index) => khbox10,

@@ -6,6 +6,7 @@ import 'package:reviewrush/features/home/presentation/screens/subject_list_scree
 import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
 import 'package:reviewrush/features/home/presentation/widgets/challenge_tile.dart';
 import 'package:reviewrush/features/home/presentation/widgets/tile_ofsub_tiles.dart';
+import 'package:reviewrush/features/settings/presentation/screens/profile.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});
@@ -38,10 +39,19 @@ class ScreenHome extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const CircleAvatar(
-                      backgroundColor: Colors.black12,
-                      radius: 30,
-                      child: Icon(Icons.import_contacts),
+                    GestureDetector(
+                      onTap: () {
+                         Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ScreenProfile(),
+                ),
+              );
+                      },
+                      child: const CircleAvatar(
+                        backgroundColor: Colors.black12,
+                        radius: 30,
+                        child: Icon(Icons.import_contacts),
+                      ),
                     ),
                     kwbox10,
                   ],

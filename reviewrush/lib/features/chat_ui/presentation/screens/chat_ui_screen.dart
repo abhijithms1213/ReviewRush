@@ -4,14 +4,14 @@ import 'package:reviewrush/features/chat_ui/data/models/chat_message.dart';
 import 'package:reviewrush/features/chat_ui/presentation/widgets/chat_ui_widget.dart';
 import 'package:reviewrush/features/chat_ui/presentation/widgets/custom_app_bar.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+class ScreenChat extends StatefulWidget {
+  const ScreenChat({super.key});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<ScreenChat> createState() => _ScreenChatState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ScreenChatState extends State<ScreenChat> {
   final TextEditingController _textController = TextEditingController();
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
@@ -36,15 +36,18 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     // Simulate AI response
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        _messages.add(ChatMessage(
-          text: "This is a ok simulated response to your message.",
-          isUser: false,
-        ));
-      });
-      _scrollToBottom();
-    });
+    Future.delayed(
+      const Duration(seconds: 1),
+      () {
+        setState(() {
+          _messages.add(ChatMessage(
+            text: "This is a ok simulated response to your message.",
+            isUser: false,
+          ));
+        });
+        _scrollToBottom();
+      },
+    );
 
     _scrollToBottom();
   }
