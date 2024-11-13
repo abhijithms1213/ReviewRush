@@ -41,11 +41,11 @@ class ScreenHome extends StatelessWidget {
                     const Spacer(),
                     GestureDetector(
                       onTap: () {
-                         Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const ScreenProfile(),
-                ),
-              );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ScreenProfile(),
+                          ),
+                        );
                       },
                       child: const CircleAvatar(
                         backgroundColor: Colors.black12,
@@ -126,19 +126,6 @@ class ScreenHome extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 247, 132, 124),
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const ScreenTaskCreation(),
-            ),
-          );
-        },
-        child: const Icon(
-          Icons.add,
         ),
       ),
     );

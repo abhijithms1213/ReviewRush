@@ -36,14 +36,14 @@ class ChallengeTile extends StatelessWidget {
                 size: 24,
               ),
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Row(
+                Row(
                   children: [
                     Text(
-                      'New Challenge!',
+                      'Let\'s remember',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -57,8 +57,8 @@ class ChallengeTile extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '$steps Steps',
-                  style: const TextStyle(
+                  'Add your subject',
+                  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
