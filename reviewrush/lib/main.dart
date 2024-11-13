@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           surface: Colors.white,
         ),
       ),
-      home: const ScreenAccount(),
+      home:  ScreenAccount(),
     );
   }
 }

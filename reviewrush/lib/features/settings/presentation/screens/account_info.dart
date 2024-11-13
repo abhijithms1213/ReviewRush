@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/fonts.dart';
- 
-class ScreenAccount extends StatefulWidget {
-  const ScreenAccount({super.key});
 
-  @override
-  State<ScreenAccount> createState() => _AccountScreenState();
-}
-
-class _AccountScreenState extends State<ScreenAccount> {
-  final TextEditingController nameController =
-      TextEditingController(text: 'David Clerisseau');
-  final TextEditingController ageController = TextEditingController(text: '28');
-  final TextEditingController emailController =
-      TextEditingController(text: 'clerisseau@gmail.com');
+class ScreenAccount extends StatelessWidget {
+  ScreenAccount({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   String? selectedSemester;
   String? selectedDepartment;
 
   final List<String> semesters = [
-    'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8'
+    'S1',
+    'S2',
+    'S3',
+    'S4',
+    'S5',
+    'S6',
+    'S7',
+    'S8'
   ];
-  
+
   final List<String> departments = [
-    'CSE', 'Civil', 'Mechanical', 'ECE', 'EEE', 
-    'Chemical', 'Biotech', 'IT', 'Other'
+    'CSE',
+    'Civil',
+    'Mechanical',
+    'ECE',
+    'EEE',
+    'Chemical',
+    'Biotech',
+    'IT',
+    'Other'
   ];
 
   @override
@@ -42,14 +48,19 @@ class _AccountScreenState extends State<ScreenAccount> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(20),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Icon(Icons.done, color: Colors.white, size: 28),
               ),
-              child: const Icon(Icons.done, color: Colors.white, size: 28),
             ),
           ),
         ],
@@ -77,10 +88,14 @@ class _AccountScreenState extends State<ScreenAccount> {
             _buildInputField('College Name', emailController),
             const SizedBox(height: 24),
             _buildDropdownField('Semester', selectedSemester, semesters,
-                (value) => setState(() => selectedSemester = value)),
+                (value) {
+              selectedSemester = value;
+            }),
             const SizedBox(height: 24),
             _buildDropdownField('Department', selectedDepartment, departments,
-                (value) => setState(() => selectedDepartment = value)),
+                (value) {
+              selectedDepartment = value;
+            }),
           ],
         ),
       ),
@@ -168,7 +183,8 @@ class _AccountScreenState extends State<ScreenAccount> {
               );
             }).toList(),
             decoration: const InputDecoration(
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               filled: true,
               fillColor: Colors.white,
               enabledBorder: UnderlineInputBorder(
@@ -182,13 +198,5 @@ class _AccountScreenState extends State<ScreenAccount> {
         ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    ageController.dispose();
-    emailController.dispose();
-    super.dispose();
   }
 }
