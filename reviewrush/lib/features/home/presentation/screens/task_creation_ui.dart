@@ -1,3 +1,4 @@
+import 'dart:ui'; // Needed for BackdropFilter
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/fonts.dart';
@@ -12,13 +13,51 @@ class TaskCreationScreen extends StatelessWidget {
     String? selectedModule;
 
     return Scaffold(
+      backgroundColor: const Color.fromARGB(253, 255, 255, 255),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 40),
+              khbox20,
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Apply blur effect
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            const Color.fromARGB(255, 255, 255, 255)
+                                .withOpacity(0.6),
+                            const Color.fromARGB(255, 205, 205, 205)
+                                .withOpacity(0.5),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                  // CircleAvatar with the icon
+                  const CircleAvatar(
+                    radius: 14,
+                    backgroundColor: Colors.transparent,
+                    child: Icon(
+                      Icons.arrow_back_ios_new,
+                      size: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              khbox20,
               Text("Task", style: fontmontserratTextStyle(fontSize: 16)),
               DropdownButtonFormField<String>(
                 value: selectedModule,
@@ -54,16 +93,14 @@ class TaskCreationScreen extends StatelessWidget {
                   contentPadding: EdgeInsets.all(0),
                   hintText: "Select module by tap here",
                   hintStyle: TextStyle(color: Colors.black),
-                  border: InputBorder.none, // Removes the underline
+                  border: InputBorder.none,
                   filled: true,
-                  fillColor:
-                      Colors.white, // Ensures consistent background color
+                  fillColor: Colors.white,
                 ),
-                dropdownColor:
-                    Colors.white, // Background color of dropdown menu
+                dropdownColor: Colors.white,
               ),
               const SizedBox(height: 20),
-              const Text("Write it", style: TextStyle(fontSize: 16)),
+              Text("Write it", style: GoogleFonts.khula(fontSize: 16)),
               khbox5,
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
