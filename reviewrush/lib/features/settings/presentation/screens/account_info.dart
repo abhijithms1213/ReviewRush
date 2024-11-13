@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reviewrush/core/constants/fonts.dart';
-
+ 
 class ScreenAccount extends StatefulWidget {
   const ScreenAccount({super.key});
 
