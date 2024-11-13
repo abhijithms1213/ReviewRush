@@ -78,31 +78,36 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           // Bottom field for writing text with only a send button
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              border: Border(
-                top: BorderSide(color: Colors.grey[300]!),
-              ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _textController,
-                    decoration: const InputDecoration(
-                      hintText: 'Message',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  border: Border(
+                    top: BorderSide(color: Colors.grey[300]!),
+                  ),
+                  borderRadius: BorderRadius.circular(30)),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _textController,
+                      decoration: const InputDecoration(
+                        hintStyle: TextStyle(color: Colors.grey),
+                        hintText: 'Type your studied material here...',
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                      ),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.send),
-                  onPressed: _handleSubmitted,
-                ),
-              ],
+                  IconButton(
+                    icon: const Icon(Icons.send),
+                    onPressed: _handleSubmitted,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
