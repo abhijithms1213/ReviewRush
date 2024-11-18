@@ -72,6 +72,7 @@ class ScreenHome extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   showModalBottomSheet(
+                    isDismissible: false,
                     context: context,
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
