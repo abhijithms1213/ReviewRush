@@ -1,8 +1,26 @@
-// Screen file
 import 'package:flutter/material.dart';
-import 'package:reviewrush/features/chat_ui/data/models/chat_message.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reviewrush/features/chat_ui/data/datasources/chat_ui_remote_data_source.dart';
+import 'package:reviewrush/features/chat_ui/data/repositories/chat_ui_repository_impl.dart';
+import 'package:reviewrush/features/chat_ui/domain/usecases/chat_ui_use_case.dart';
+import 'package:reviewrush/features/chat_ui/presentation/bloc/gpt_bloc.dart';
 import 'package:reviewrush/features/chat_ui/presentation/widgets/chat_ui_widget.dart';
 import 'package:reviewrush/features/chat_ui/presentation/widgets/custom_app_bar.dart';
+
+class WrapperChat extends StatelessWidget {
+  const WrapperChat({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final GPTBloc gptBloc = GPTBloc(
+      GetChatResponseUseCase(GPTRepositoryImpl(GPTDataSourceImpl())),
+    );
+    return BlocProvider(
+      create: (context) => gptBloc,
+      child: const ScreenChat(),
+    );
+  }
+}
 
 class ScreenChat extends StatefulWidget {
   const ScreenChat({super.key});
@@ -13,7 +31,7 @@ class ScreenChat extends StatefulWidget {
 
 class _ScreenChatState extends State<ScreenChat> {
   final TextEditingController _textController = TextEditingController();
-  final List<ChatMessage> _messages = [];
+  // final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -23,46 +41,45 @@ class _ScreenChatState extends State<ScreenChat> {
     super.dispose();
   }
 
-  void _handleSubmitted() {
-    final text = _textController.text.trim();
-    if (text.isEmpty) return;
+  // void _handleSubmitted() {
+  //   final text = _textController.text.trim();
+  //   if (text.isEmpty) return;
 
-    _textController.clear();
-    setState(() {
-      _messages.add(ChatMessage(
-        text: text,
-        isUser: true,
-      ));
-    });
+  //   _textController.clear();
+  //   setState(() {
+  //     _messages.add(ChatMessage(
+  //       text: text,
+  //     ));
+  //   });
 
-    // Simulate AI response
-    Future.delayed(
-      const Duration(seconds: 1),
-      () {
-        setState(() {
-          _messages.add(ChatMessage(
-            text: "This is a ok simulated response to your message.",
-            isUser: false,
-          ));
-        });
-        _scrollToBottom();
-      },
-    );
+  //   // Simulate AI response
+  //   Future.delayed(
+  //     const Duration(seconds: 1),
+  //     () {
+  //       setState(() {
+  //         _messages.add(ChatMessage(
+  //           text: "This is a ok simulated response to your message.",
+  //           isUser: false,
+  //         ));
+  //       });
+  //       _scrollToBottom();
+  //     },
+  //   );
 
-    _scrollToBottom();
-  }
+  //   _scrollToBottom();
+  // }
 
-  void _scrollToBottom() {
-    Future.delayed(const Duration(milliseconds: 100), () {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
-    });
-  }
+  // void _scrollToBottom() {
+  //   Future.delayed(const Duration(milliseconds: 100), () {
+  //     if (_scrollController.hasClients) {
+  //       _scrollController.animateTo(
+  //         _scrollController.position.maxScrollExtent,
+  //         duration: const Duration(milliseconds: 300),
+  //         curve: Curves.easeOut,
+  //       );
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +88,34 @@ class _ScreenChatState extends State<ScreenChat> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              padding: const EdgeInsets.all(8.0),
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                return MessageBubble(message: _messages[index]);
+            child: BlocBuilder<GPTBloc, GPTState>(
+              builder: (context, state) {
+                if (state is GPTInitial) {
+                  return const Center(child: Text('Start a conversation'));
+                }
+                if (state is GPTLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (state is GPTError) {
+                  return Center(
+                    child: Text(state.message),
+                  );
+                }
+                if (state is GPTLoaded) {
+                  return ListView.builder(
+                    controller: _scrollController,
+                    padding: const EdgeInsets.all(8.0),
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return MessageBubble(
+                        message:  state.response,
+                        isUser: true,
+                      );
+                    },
+                  );
+                }
+
+                return const Text("unknown state");
               },
             ),
           ),
@@ -107,7 +146,16 @@ class _ScreenChatState extends State<ScreenChat> {
                   ),
                   IconButton(
                     icon: const Icon(Icons.send),
-                    onPressed: _handleSubmitted,
+                    // onPressed: _handleSubmitted,
+                    onPressed: () {
+                      GPTBloc gptBloc = context.read<GPTBloc>();
+                      gptBloc.add(
+                        SendMessageEvent(
+                          _textController.text,
+                        ),
+                      );
+                      _textController.clear();
+                    },
                   ),
                 ],
               ),

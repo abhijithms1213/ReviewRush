@@ -110,33 +110,33 @@ class TaskBottomSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Due Date',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.black54,
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime.now(),
-                lastDate: DateTime.now().add(const Duration(days: 365)),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                children: [
-                  Icon(Icons.calendar_today, color: Colors.red[300], size: 20),
-                  const SizedBox(width: 8),
-                  const Text('Today'),
-                ],
-              ),
-            ),
-          ),
+          // const Text(
+          //   'Due Date',
+          //   style: TextStyle(
+          //     fontSize: 14,
+          //     color: Colors.black54,
+          //   ),
+          // ),
+          // InkWell(
+          //   onTap: () {
+          //     showDatePicker(
+          //       context: context,
+          //       initialDate: DateTime.now(),
+          //       firstDate: DateTime.now(),
+          //       lastDate: DateTime.now().add(const Duration(days: 365)),
+          //     );
+          //   },
+          //   child: Container(
+          //     padding: const EdgeInsets.symmetric(vertical: 8),
+          //     child: Row(
+          //       children: [
+          //         Icon(Icons.calendar_today, color: Colors.red[300], size: 20),
+          //         const SizedBox(width: 8),
+          //         const Text('Today'),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           const SizedBox(height: 20),
           SizedBox(
             width: double.infinity,

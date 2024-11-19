@@ -42,33 +42,69 @@ class ScreenSubjectBased extends StatelessWidget {
                 children: [
                   // Photo Pin Card
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(15),
-                      margin: const EdgeInsets.only(right: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'PHOTO',
-                            style: GoogleFonts.inconsolata(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Container(
+                              padding: const EdgeInsets.all(
+                                  15), // Padding inside the SnackBar
+                              decoration: BoxDecoration(
+                                color: Colors.orange[400],
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                'currently this feature is under development',
+                                style: GoogleFonts.inconsolata(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Go To A New Photography Location With Zahra',
-                            style: GoogleFonts.inconsolata(
-                              fontSize: 12,
-                              color: Colors.white,
+                            behavior: SnackBarBehavior
+                                .floating, // Makes the SnackBar float
+                            backgroundColor: Colors
+                                .transparent, // Sets background as transparent
+                            margin: const EdgeInsets.only(
+                              // bottom: 10, // Padding from the bottom
+                              left: 10, // Padding from the left
+                              right: 10, // Padding from the right
                             ),
+                            elevation:
+                                0, // Remove shadow elevation if not desired
+                            duration:
+                                const Duration(seconds: 3), // Display duration
                           ),
-                          const SizedBox(height: 8),
-                        ],
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.only(right: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'PHOTO',
+                              style: GoogleFonts.inconsolata(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Go To A New Photography Location With Zahra',
+                              style: GoogleFonts.inconsolata(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                          ],
+                        ),
                       ),
                     ),
                   ),
