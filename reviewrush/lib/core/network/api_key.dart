@@ -1,2 +1,0 @@
-const String apiKey =
-    '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';
