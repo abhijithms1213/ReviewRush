@@ -1,11 +1,10 @@
-class ChatMessage {
-  final String text;
-  final bool isUser;
-  final DateTime timestamp;
+class GPTChatModel {
+  final String role;
+  final String content;
 
-  ChatMessage({
-    required this.text,
-    required this.isUser,
-    DateTime? timestamp,
-  }) : timestamp = timestamp ?? DateTime.now();
+  GPTChatModel({required this.role, required this.content});
+
+  Map<String, dynamic> toJson() {
+    return {"role": role, "content": content};
+  }
 }

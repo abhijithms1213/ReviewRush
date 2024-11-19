@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           surface: Colors.white,
         ),
       ),
-      home: const ScreenHome(),
+      home: const ScreenChat(),
     );
   }
 }

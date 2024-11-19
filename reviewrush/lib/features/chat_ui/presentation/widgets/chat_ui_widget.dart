@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:reviewrush/features/chat_ui/data/models/chat_message.dart';
 
 class MessageBubble extends StatefulWidget {
   final ChatMessage message;
