@@ -1,12 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MessageBubble extends StatefulWidget {
-  final ChatMessage message;
+  final String message;
+  final bool isUser;
 
   const MessageBubble({
     super.key,
     required this.message,
+    required this.isUser,
   });
 
   @override
@@ -27,11 +31,10 @@ class _MessageBubbleState extends State<MessageBubble> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
-        mainAxisAlignment: widget.message.isUser
-            ? MainAxisAlignment.end
-            : MainAxisAlignment.start,
+        mainAxisAlignment:
+            widget.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
-          if (!widget.message.isUser)
+          if (!widget.isUser)
             const CircleAvatar(
               radius: 15,
               backgroundColor: Colors.red,
@@ -47,14 +50,14 @@ class _MessageBubbleState extends State<MessageBubble> {
                   vertical: 10.0,
                 ),
                 decoration: BoxDecoration(
-                  color: widget.message.isUser
+                  color: widget.isUser
                       ? const Color.fromARGB(10, 0, 0, 0)
                       : Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: _isExpanded || !widget.message.isUser
+                child: _isExpanded || !widget.isUser
                     ? Text(
-                        widget.message.text,
+                        widget.message,
                         style: GoogleFonts.openSans(
                           color: Colors.black87,
                           fontSize: 14,

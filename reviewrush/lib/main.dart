@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reviewrush/features/chat_ui/presentation/screens/chat_ui_screen.dart';
-import 'package:reviewrush/features/home/presentation/screens/home_screen.dart';
-import 'package:reviewrush/features/home/presentation/screens/subject_list_screen.dart';
-import 'package:reviewrush/features/home/presentation/screens/task_creation_ui.dart';
-import 'package:reviewrush/features/settings/presentation/screens/account_info.dart';
-import 'package:reviewrush/features/settings/presentation/screens/faq_ui.dart';
-import 'package:reviewrush/features/settings/presentation/screens/profile.dart';
-import 'package:reviewrush/features/settings/presentation/screens/report_an_issue.dart';
-import 'package:reviewrush/features/settings/presentation/screens/settings_screen.dart';
+import 'package:reviewrush/features/chat_ui/presentation/screens/chat_bot.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,17 +8,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          surface: Colors.white,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: const ScreenChat(),
+      home: ChatBot(),
     );
   }
 }
+
