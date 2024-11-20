@@ -3,7 +3,7 @@ part of 'gpt_bloc.dart';
 abstract class GPTEvent {}
 
 class SendMessageEvent extends GPTEvent {
-  final String userMessage;
+  final String message;
 
-  SendMessageEvent(this.userMessage);
+  SendMessageEvent(this.message);
 }

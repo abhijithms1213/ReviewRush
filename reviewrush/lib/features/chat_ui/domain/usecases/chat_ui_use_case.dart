@@ -1,4 +1,3 @@
-import 'package:reviewrush/features/chat_ui/data/models/chat_message.dart';
 import 'package:reviewrush/features/chat_ui/domain/repositories/chat_ui_repository.dart';
 
 class GetChatResponseUseCase {
@@ -6,7 +5,7 @@ class GetChatResponseUseCase {
 
   GetChatResponseUseCase(this.repository);
 
-  Future<String> execute(List<GPTChatModel> messages) {
-    return repository.fetchChatResponse(messages);
+  Future<String> call(String message) async {
+    return await repository.getResponse(message);
   }
 }

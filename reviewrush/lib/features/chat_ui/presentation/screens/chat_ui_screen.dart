@@ -41,46 +41,6 @@ class _ScreenChatState extends State<ScreenChat> {
     super.dispose();
   }
 
-  // void _handleSubmitted() {
-  //   final text = _textController.text.trim();
-  //   if (text.isEmpty) return;
-
-  //   _textController.clear();
-  //   setState(() {
-  //     _messages.add(ChatMessage(
-  //       text: text,
-  //     ));
-  //   });
-
-  //   // Simulate AI response
-  //   Future.delayed(
-  //     const Duration(seconds: 1),
-  //     () {
-  //       setState(() {
-  //         _messages.add(ChatMessage(
-  //           text: "This is a ok simulated response to your message.",
-  //           isUser: false,
-  //         ));
-  //       });
-  //       _scrollToBottom();
-  //     },
-  //   );
-
-  //   _scrollToBottom();
-  // }
-
-  // void _scrollToBottom() {
-  //   Future.delayed(const Duration(milliseconds: 100), () {
-  //     if (_scrollController.hasClients) {
-  //       _scrollController.animateTo(
-  //         _scrollController.position.maxScrollExtent,
-  //         duration: const Duration(milliseconds: 300),
-  //         curve: Curves.easeOut,
-  //       );
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,11 +65,12 @@ class _ScreenChatState extends State<ScreenChat> {
                   return ListView.builder(
                     controller: _scrollController,
                     padding: const EdgeInsets.all(8.0),
-                    itemCount: 10,
+                    itemCount: state.messages.length,
                     itemBuilder: (context, index) {
+                      final message = state.messages[index];
                       return MessageBubble(
-                        message:  state.response,
-                        isUser: true,
+                        message: message.text,
+                        isUser: message.isUser,
                       );
                     },
                   );
