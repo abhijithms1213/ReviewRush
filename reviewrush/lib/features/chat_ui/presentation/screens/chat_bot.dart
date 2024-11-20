@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:reviewrush/core/network/api_key.dart';
 
 class ChatBot extends StatefulWidget {
   const ChatBot({super.key});
@@ -18,7 +19,7 @@ class _ChatBotState extends State<ChatBot> {
   List<ChatUser> typing = [];
 
   final ourUrl =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAy93vpxQj6bK9Ien2U1QH0XgZfO0zJjog";
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKeyGoogle";
   final header = {'Content-Type': 'application/json'};
 
   getData(ChatMessage m) async {
