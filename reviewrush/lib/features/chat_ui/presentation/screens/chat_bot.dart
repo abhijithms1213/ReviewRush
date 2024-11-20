@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:reviewrush/core/network/api_key.dart';
 
 class ChatBot extends StatefulWidget {
   const ChatBot({super.key});
@@ -11,13 +13,13 @@ class ChatBot extends StatefulWidget {
 }
 
 class _ChatBotState extends State<ChatBot> {
-  ChatUser muself = ChatUser(id: "1", firstName: "SHARJEEL");
+  ChatUser muself = ChatUser(id: "1", firstName: "ABHIJITH");
   ChatUser bot = ChatUser(id: "2", firstName: "Chat GPT");
   List<ChatMessage> allMassages = [];
   List<ChatUser> typing = [];
 
   final ourUrl =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAy93vpxQj6bK9Ien2U1QH0XgZfO0zJjog";
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKeyGoogle";
   final header = {'Content-Type': 'application/json'};
 
   getData(ChatMessage m) async {
@@ -39,7 +41,7 @@ class _ChatBotState extends State<ChatBot> {
         .then((value) {
       if (value.statusCode == 200) {
         var result = jsonDecode(value.body);
-        print(result["candidates"][0]["content"]["parts"][0]["text"]);
+        log(result["candidates"][0]["content"]["parts"][0]["text"]);
         ChatMessage m1 = ChatMessage(
           user: bot,
           createdAt: DateTime.now(),
@@ -47,7 +49,7 @@ class _ChatBotState extends State<ChatBot> {
         );
         allMassages.insert(0, m1);
       } else {
-        print("Error occurred");
+        log("Error occurred");
       }
     }).catchError((e) {});
     typing.remove(bot);
@@ -58,7 +60,7 @@ class _ChatBotState extends State<ChatBot> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DashChat(
-        messageOptions: MessageOptions(
+        messageOptions: const MessageOptions(
             showTime: true,
             textColor: Colors.blue,
             containerColor: Colors.black),

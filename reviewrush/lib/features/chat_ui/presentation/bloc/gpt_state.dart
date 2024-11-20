@@ -7,10 +7,11 @@ class GPTInitial extends GPTState {}
 class GPTLoading extends GPTState {}
 
 class GPTLoaded extends GPTState {
-  final String response;
+  final List<ChatMessageModel> messages;
 
-  GPTLoaded(this.response);
+  GPTLoaded(this.messages);
 }
+
 
 class GPTError extends GPTState {
   final String message;
