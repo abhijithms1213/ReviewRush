@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:reviewrush/features/chat_ui/data/datasources/services.dart';
 import 'package:reviewrush/features/chat_ui/data/models/cht_model.dart';
 import 'package:reviewrush/features/chat_ui/domain/usecases/chat_ui_use_case.dart';
 
@@ -7,33 +11,35 @@ part 'gpt_state.dart';
 
 class GPTBloc extends Bloc<GPTEvent, GPTState> {
   final GetChatResponseUseCase getChatResponse;
+  final ChatServices chatServices = ChatServices();
 
-  GPTBloc(this.getChatResponse) : super(GPTInitial()) {
+  GPTBloc(
+    this.getChatResponse,
+  ) : super(GPTInitial()) {
     on<SendMessageEvent>((event, emit) async {
-      final currentState = state;
       List<ChatMessageModel> conversationContext = [];
 
-      if (currentState is GPTLoaded) {
-        // Use existing messages as context
-        conversationContext = currentState.messages;
+      if (state is GPTLoaded) {
+        conversationContext = (state as GPTLoaded).messages;
       }
 
       emit(GPTLoading());
       try {
-        // Add the new user message to the context
         final updatedMessages = List<ChatMessageModel>.from(conversationContext)
           ..add(ChatMessageModel(text: event.message, isUser: true));
 
-        // Pass the entire context to the getChatResponse use case
         final response = await getChatResponse(
             updatedMessages.map((msg) => msg.text).join('\n'));
-
-        // Add the bot's response to the updated message list
         updatedMessages.add(ChatMessageModel(text: response, isUser: false));
 
-        // Emit the new state with the updated messages
+        // Save to local Hive box
+        // for (var msg in updatedMessages) {
+        //   await chatServices.addChat(msg);
+        // }
+
         emit(GPTLoaded(updatedMessages));
       } catch (e) {
+        log(e.toString());
         emit(GPTError('Failed to fetch response: $e'));
       }
     });

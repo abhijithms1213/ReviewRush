@@ -1,9 +1,19 @@
 import 'package:reviewrush/features/chat_ui/domain/entities/message_entity.dart';
+import 'package:hive/hive.dart';
 
-class ChatMessageModel extends ChatMessageEntity {
+part 'cht_model.g.dart'; // Required for code generation
+
+@HiveType(typeId: 0)
+class ChatMessageModel extends HiveObject {
+  @HiveField(0)
+  final String text;
+
+  @HiveField(1)
+  final bool isUser;
+
   ChatMessageModel({
-    required super.text,
-    required super.isUser,
+    required this.text,
+    required this.isUser,
   });
 
   // Factory method to create a model from JSON

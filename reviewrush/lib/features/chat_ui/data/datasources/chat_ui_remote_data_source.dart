@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:reviewrush/core/network/api_key.dart';
 
 abstract class GPTDataSource {
   Future<String> fetchResponse(String message);
@@ -7,7 +8,7 @@ abstract class GPTDataSource {
 
 class GPTDataSourceImpl implements GPTDataSource {
   final String _url =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAy93vpxQj6bK9Ien2U1QH0XgZfO0zJjog";
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKeyGoogle";
 
   final Map<String, String> _headers = {'Content-Type': 'application/json'};
 

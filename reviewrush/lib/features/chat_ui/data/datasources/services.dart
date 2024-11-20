@@ -39,4 +39,8 @@ class ChatServices {
     }
     await _msgmodel!.deleteAt(index);
   }
+
+  Future<void> clearDB() async {
+    await _msgmodel!.clear();
+  }
 }

@@ -13,7 +13,11 @@ class WrapperChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GPTBloc gptBloc = GPTBloc(
-      GetChatResponseUseCase(GPTRepositoryImpl(GPTDataSourceImpl())),
+      GetChatResponseUseCase(
+        GPTRepositoryImpl(
+          GPTDataSourceImpl(),
+        ),
+      ),
     );
     return BlocProvider(
       create: (context) => gptBloc,
@@ -22,27 +26,13 @@ class WrapperChat extends StatelessWidget {
   }
 }
 
-class ScreenChat extends StatefulWidget {
+class ScreenChat extends StatelessWidget {
   const ScreenChat({super.key});
 
   @override
-  State<ScreenChat> createState() => _ScreenChatState();
-}
-
-class _ScreenChatState extends State<ScreenChat> {
-  final TextEditingController _textController = TextEditingController();
-  // final List<ChatMessage> _messages = [];
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _textController.dispose();
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final TextEditingController textController = TextEditingController();
+
     return Scaffold(
       appBar: const ChatTopBar(),
       body: Column(
@@ -63,7 +53,6 @@ class _ScreenChatState extends State<ScreenChat> {
                 }
                 if (state is GPTLoaded) {
                   return ListView.builder(
-                    controller: _scrollController,
                     padding: const EdgeInsets.all(8.0),
                     itemCount: state.messages.length,
                     itemBuilder: (context, index) {
@@ -80,23 +69,23 @@ class _ScreenChatState extends State<ScreenChat> {
               },
             ),
           ),
-          // Bottom field for writing text with only a send button
           Padding(
             padding: const EdgeInsets.all(16),
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border(
-                    top: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  borderRadius: BorderRadius.circular(30)),
+                color: Colors.grey[200],
+                border: Border(
+                  top: BorderSide(color: Colors.grey[300]!),
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ),
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
-                      controller: _textController,
+                      controller: textController,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.grey),
                         hintText: 'Type your studied material here...',
@@ -107,15 +96,12 @@ class _ScreenChatState extends State<ScreenChat> {
                   ),
                   IconButton(
                     icon: const Icon(Icons.send),
-                    // onPressed: _handleSubmitted,
                     onPressed: () {
-                      GPTBloc gptBloc = context.read<GPTBloc>();
-                      gptBloc.add(
-                        SendMessageEvent(
-                          _textController.text,
-                        ),
-                      );
-                      _textController.clear();
+                      final message = textController.text.trim();
+                      if (message.isNotEmpty) {
+                        context.read<GPTBloc>().add(SendMessageEvent(message));
+                        textController.clear();
+                      }
                     },
                   ),
                 ],
