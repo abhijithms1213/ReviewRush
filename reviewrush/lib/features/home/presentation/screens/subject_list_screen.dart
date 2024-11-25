@@ -200,11 +200,11 @@ class ScreenSubjectBased extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const ScreenChat(),
-                          ),
-                        );
+                        // Navigator.of(context).push(
+                        //   // MaterialPageRoute(
+                        //   //   builder: (context) => const ScreenChat(),
+                        //   // ),
+                        // );
                       },
                       child: WidgetSubByDatesTiles(
                         title: 'first study',
